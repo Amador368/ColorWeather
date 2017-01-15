@@ -97,11 +97,10 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginLeft="90dp"
         android:layout_marginTop="24dp"
-        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/currentTempTextView" />
 
     <TextView
-        android:text="TextView"
+        android:text="H:12"
         style="@style/mainFont"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,7 +109,74 @@
         app:layout_constraintTop_toBottomOf="@+id/currentTempTextView"
         android:layout_marginEnd="90dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="90dp"
+        android:layout_marginRight="90dp"/>
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33072916"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="127dp" />
+
+    <android.support.constraint.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/guideline2"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="256dp"
+        app:layout_constraintGuide_percent="0.6666667" />
+
+    <TextView
+        style="@style/mainFont"
+        android:textSize="20sp"
         android:textStyle="bold"
-        tools:text="H:12" />
+        android:text="Daily"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dailyTextView"
+        app:layout_constraintRight_toLeftOf="@+id/guideline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        style="@style/mainFont"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Hourly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/hourlyTextView"
+        app:layout_constraintRight_toLeftOf="@+id/guideline2"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        style="@style/mainFont"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Minutely"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minutelyTextView"
+        app:layout_constraintLeft_toLeftOf="@+id/guideline2"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp" />
 </android.support.constraint.ConstraintLayout>
