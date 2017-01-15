@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">Color Weather</string>
     <string name="wellcome_text">Hola</string>
+    <string name="hourly_forecast">Hourly Forecast</string>
+    <string name="daily_forecast">Daily Forecast</string>
+    <string name="minutely_forecast">Minutely Forecast</string>
+
+    <string name="minutely_text">Minutely</string>
+
+    <string name="daily_text">Daly</string>
+
+    <string name="hourly_text">Hourly</string>
+
 </resources>

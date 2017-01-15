@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_color_weather"
+    android:id="@+id/activity_hourly_weather"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="me.asantiago.colorweather.ColorWeatherActivity">
-
+    android:background="@color/backgroundColor"
+    tools:context="me.asantiago.colorweather.HourlyWeatherActivity">
     <TextView
-        android:text="Daily Forecast"
+        style="@style/mainFont"
+        android:text="@string/hourly_forecast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/dailyWeatherTextView"
+        android:id="@+id/hourlyWeatherTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:textStyle="normal|bold" />
 
     <ListView
         android:id="@+id/itemsListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/dailyWeatherTextView"
+        android:layout_below="@+id/hourlyWeatherTextView"
         android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
