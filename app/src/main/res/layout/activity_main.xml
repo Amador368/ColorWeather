@@ -12,7 +12,7 @@
         android:src="@drawable/cloudy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView"
+        android:id="@+id/iconWeatherImageView"
         tools:layout_constraintTop_creator="1"
         tools:layout_constraintRight_creator="1"
         app:layout_constraintRight_toRightOf="parent"
@@ -26,65 +26,51 @@
         android:text="Partly Cloudy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        app:layout_constraintLeft_toLeftOf="@+id/imageView"
-        app:layout_constraintRight_toRightOf="@+id/imageView"
+        android:id="@+id/iconDescriptionTextView"
+        app:layout_constraintLeft_toLeftOf="@+id/iconWeatherImageView"
+        app:layout_constraintRight_toRightOf="@+id/iconWeatherImageView"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"/>
+        app:layout_constraintTop_toBottomOf="@+id/iconWeatherImageView"/>
 
     <TextView
-        android:text="23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/weatherImageView"
-        app:layout_constraintRight_toRightOf="@+id/textView"
-        app:layout_constraintLeft_toLeftOf="@+id/textView"
+        android:id="@+id/degreeWeatherTextView"
+        app:layout_constraintRight_toRightOf="@+id/iconDescriptionTextView"
+        app:layout_constraintLeft_toLeftOf="@+id/iconDescriptionTextView"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/iconDescriptionTextView"
         android:textColor="@android:color/white"
         android:textSize="54sp"
         android:fontFamily="sans-serif-light"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintLeft_creator="1" />
 
-    <TextView
-        android:text="23"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/weatherDescriptionTextView"
-        app:layout_constraintRight_toRightOf="@+id/textView"
-        app:layout_constraintLeft_toLeftOf="@+id/textView"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:textColor="@android:color/white"
-        android:textSize="54sp"
-        android:fontFamily="sans-serif-light"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintLeft_creator="1" />
 
     <TextView
-        android:text="23"
         style="@style/mainFont"
+        android:text="22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/currentTempTextView"
-        app:layout_constraintRight_toRightOf="@+id/textView"
-        app:layout_constraintLeft_toLeftOf="@+id/textView"
+        app:layout_constraintRight_toRightOf="@+id/iconDescriptionTextView"
+        app:layout_constraintLeft_toLeftOf="@+id/iconDescriptionTextView"
         android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/iconDescriptionTextView"
         android:textSize="54sp"
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintLeft_creator="1" />
 
     <ImageView
+
         android:src="@drawable/degree"
         android:layout_width="15dp"
         android:layout_height="0dp"
         android:id="@+id/degreeImageView"
         android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@+id/weatherImageView"
+        app:layout_constraintLeft_toRightOf="@+id/currentTempTextView"
         android:layout_marginLeft="8dp"
-        app:layout_constraintTop_toTopOf="@+id/weatherImageView"
+        app:layout_constraintTop_toTopOf="@+id/degreeWeatherTextView"
         android:layout_marginTop="8dp" />
 
     <TextView
