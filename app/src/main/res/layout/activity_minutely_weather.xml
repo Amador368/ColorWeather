@@ -17,11 +17,11 @@
         android:layout_marginTop="16dp"
         android:textStyle="normal|bold" />
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/minutelyWeatherTextView"
-        android:layout_centerHorizontal="true" />
+    <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_below="@+id/minutelyWeatherTextView"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
 
 </RelativeLayout>
