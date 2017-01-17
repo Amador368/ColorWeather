@@ -16,6 +16,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,20 +45,20 @@ public class MainActivity extends Activity {
         ButterKnife.bind(this);
 
         //Using CurrentWeather class
-        CurrentWeather currentWeather = new CurrentWeather(MainActivity.this);
+        //CurrentWeather currentWeather = new CurrentWeather(MainActivity.this);
 
-        currentWeather.setIconImage("rain");
-        currentWeather.setDescription("Raining");
-        currentWeather.setCurrentTemperature("26");
-        currentWeather.setHighestTemperature("28");
-        currentWeather.setLowestTemperature("10");
+//        currentWeather.setIconImage("rain");
+//        currentWeather.setDescription("Raining");
+//        currentWeather.setCurrentTemperature("26");
+//        currentWeather.setHighestTemperature("28");
+//        currentWeather.setLowestTemperature("10");
 
         //init values
-        iconWeatherImageView.setImageDrawable(currentWeather.getIconDrawableResource());
-        iconDescriptionTextView.setText(currentWeather.getDescription());
-        lowestTempTextView.setText(currentWeather.getLowestTemperature());
-        highestTempTextView.setText(currentWeather.getHighestTemperature());
-        currentTempTextView.setText(currentWeather.getCurrentTemperature());
+//        iconWeatherImageView.setImageDrawable(currentWeather.getIconDrawableResource());
+//        iconDescriptionTextView.setText(currentWeather.getDescription());
+//        lowestTempTextView.setText(currentWeather.getLowestTemperature());
+//        highestTempTextView.setText(currentWeather.getHighestTemperature());
+//        currentTempTextView.setText(currentWeather.getCurrentTemperature());
 
 
         //creating test request
@@ -63,7 +67,7 @@ public class MainActivity extends Activity {
 
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://www.google.com";
+        String url ="https://api.darksky.net/forecast/b0a46a5014bcb88370a36ef5ac72eb9e/37.8267,-122.4233";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -71,7 +75,20 @@ public class MainActivity extends Activity {
                     @Override
                     public void onResponse(String response) {
                         // Display the first 500 characters of the response string.
-                        Log.d(TAG,"Response is xd: "+ response.substring(0,500));
+
+                        try {
+                            CurrentWeather currentWeather = getCurrentWeatherFromJson(response);
+                            Log.d(TAG,"lol: "+ response.substring(0,500));
+
+                            iconWeatherImageView.setImageDrawable(currentWeather.getIconDrawableResource());
+                            iconDescriptionTextView.setText(currentWeather.getDescription());
+                            lowestTempTextView.setText(currentWeather.getLowestTemperature());
+                            highestTempTextView.setText(currentWeather.getHighestTemperature());
+                            currentTempTextView.setText(currentWeather.getCurrentTemperature());
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }, new Response.ErrorListener() {
             @Override
@@ -101,6 +118,34 @@ public class MainActivity extends Activity {
     public void minutelyWeatherClick(){
         Intent minutelyActivityIntent = new Intent(MainActivity.this, MinutelyWeatherActivity.class);
         startActivity(minutelyActivityIntent);
+    }
+
+    private CurrentWeather getCurrentWeatherFromJson(String json) throws JSONException {
+        JSONObject jsonObject = new JSONObject(json);
+
+        JSONObject jsonWithCurrentlyWeather = jsonObject.getJSONObject("currently");
+        JSONObject jsonWithDailyWeather = jsonObject.getJSONObject("daily");
+        JSONArray jsonWithDailyWeatherData = jsonWithDailyWeather.getJSONArray("data");
+        JSONObject jsonWithTodayData = jsonWithDailyWeatherData.getJSONObject(0);
+
+        String summary = jsonWithCurrentlyWeather.getString("summary");
+        String icon =jsonWithCurrentlyWeather.getString("icon");
+        String temperature = jsonWithCurrentlyWeather.getDouble("temperature") + "";
+
+        String maxTemperature = jsonWithTodayData.getDouble("temperatureMax")+ "";
+        String minTemperature = jsonWithTodayData.getDouble("temperatureMin")+ "";
+
+        //object from CurrentWeather Class
+        CurrentWeather currentWeather = new CurrentWeather(MainActivity.this);
+        //Setting values from json response data
+        currentWeather.setDescription(summary);
+        currentWeather.setIconImage(icon);
+        currentWeather.setCurrentTemperature(temperature);
+        currentWeather.setHighestTemperature(maxTemperature);
+        currentWeather.setLowestTemperature(minTemperature);
+
+
+        return currentWeather;
     }
 
 }
