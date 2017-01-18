@@ -82,9 +82,9 @@ public class MainActivity extends Activity {
 
                             iconWeatherImageView.setImageDrawable(currentWeather.getIconDrawableResource());
                             iconDescriptionTextView.setText(currentWeather.getDescription());
-                            lowestTempTextView.setText(currentWeather.getLowestTemperature());
+                            lowestTempTextView.setText(String.format("L: %s °",currentWeather.getLowestTemperature()));
                             highestTempTextView.setText(String.format("H: %s °",currentWeather.getHighestTemperature()));
-                            currentTempTextView.setText(String.format("L; %s °", currentWeather.getCurrentTemperature()));
+                            currentTempTextView.setText(currentWeather.getCurrentTemperature());
 
                         } catch (JSONException e) {
                             e.printStackTrace();
