@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
 
 // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="https://api.darksky.net/forecast/b0a46a5014bcb88370a36ef5ac72eb9e/37.8267,-122.4233";
+        String url ="https://api.darksky.net/forecast/b0a46a5014bcb88370a36ef5ac72eb9e/37.8267,-122.4233?units=si";
 
 // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
@@ -83,8 +83,8 @@ public class MainActivity extends Activity {
                             iconWeatherImageView.setImageDrawable(currentWeather.getIconDrawableResource());
                             iconDescriptionTextView.setText(currentWeather.getDescription());
                             lowestTempTextView.setText(currentWeather.getLowestTemperature());
-                            highestTempTextView.setText(currentWeather.getHighestTemperature());
-                            currentTempTextView.setText(currentWeather.getCurrentTemperature());
+                            highestTempTextView.setText(String.format("H: %s °",currentWeather.getHighestTemperature()));
+                            currentTempTextView.setText(String.format("L; %s °", currentWeather.getCurrentTemperature()));
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -130,10 +130,10 @@ public class MainActivity extends Activity {
 
         String summary = jsonWithCurrentlyWeather.getString("summary");
         String icon =jsonWithCurrentlyWeather.getString("icon");
-        String temperature = jsonWithCurrentlyWeather.getDouble("temperature") + "";
+        String temperature = Math.round(jsonWithCurrentlyWeather.getDouble("temperature")) + "";
 
-        String maxTemperature = jsonWithTodayData.getDouble("temperatureMax")+ "";
-        String minTemperature = jsonWithTodayData.getDouble("temperatureMin")+ "";
+        String maxTemperature = Math.round(jsonWithTodayData.getDouble("temperatureMax")) + "";
+        String minTemperature = Math.round(jsonWithTodayData.getDouble("temperatureMin")) + "";
 
         //object from CurrentWeather Class
         CurrentWeather currentWeather = new CurrentWeather(MainActivity.this);
