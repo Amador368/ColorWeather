@@ -28,6 +28,8 @@ public class DailyWeatherAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
+        if (days == null)
+            return 0;
         return days.size();//array size
     }
 
@@ -63,10 +65,6 @@ public class DailyWeatherAdapter extends BaseAdapter{
             viewHolder = (ViewHolder) view.getTag();
 
         }
-
-//        TextView dayTitle = (TextView) view.findViewById(R.id.dailyListTitleTextView);
-//        TextView dayDescription = (TextView) view.findViewById(R.id.dailyListDescriptionTextView);
-//        TextView dayRainProbability = (TextView) view.findViewById(R.id.dailyListProbabilityTextView);
 
         viewHolder.dayTitle.setText(day.getDayName());
         viewHolder.dayDescription.setText(day.getWeatherDescription());

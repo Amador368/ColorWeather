@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.android.volley.Request;
@@ -94,6 +95,7 @@ public class MainActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.d(TAG,"That didn't work!");
+                Toast.makeText(MainActivity.this,"Connection Error!", Toast.LENGTH_LONG) .show();
             }
         });
         // Add the request to the RequestQueue.
@@ -218,10 +220,6 @@ public class MainActivity extends Activity {
 
         String timeZone = jsonObject.getString("timezone");
         dateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
-
-        Log.d(TAG, "jsonObject");
-
-        Log.d(TAG, "minutely data  abajo");
 
         //JSONObject jsonWithMinutelyWeather = jsonObject.getJSONObject("minutely");
         JSONObject jsonWithMinutelyWeather = jsonObject.getJSONObject("minutely");

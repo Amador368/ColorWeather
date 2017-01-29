@@ -10,5 +10,6 @@
     <string name="daily_text">Daly</string>
 
     <string name="hourly_text">Hourly</string>
+    <string name="no_data_to_display">No data to display</string>
 
 </resources>
