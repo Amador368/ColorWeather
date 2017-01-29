@@ -17,7 +17,7 @@
 
     <TextView
         style="@style/mainFont"
-        android:textSize="21sp"
+        android:textSize="18dp"
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

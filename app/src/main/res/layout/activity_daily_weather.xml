@@ -23,5 +23,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/dailyWeatherTextView"
+        android:divider="@null"
+        android:padding="5dp"
+        android:dividerHeight="10dp"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

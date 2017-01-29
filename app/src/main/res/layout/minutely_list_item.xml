@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:background="@drawable/bg_gradient_blue"
+    android:layout_marginBottom="10dp"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -15,7 +16,7 @@
 
     <TextView
         style="@style/mainFont"
-        android:textSize="20sp"
+        android:textSize="18dp"
         android:text="TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
