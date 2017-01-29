@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import me.asantiago.colorweather.Minute;
 import me.asantiago.colorweather.R;
 
 /**
