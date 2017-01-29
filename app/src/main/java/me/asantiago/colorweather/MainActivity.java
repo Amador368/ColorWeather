@@ -46,6 +46,7 @@ public class MainActivity extends Activity {
     public static final String MINUTELY = "minutely";
     public static final String PRECIP_PROBABILITY = "precipProbability";
     public static final String DAYS_ARRAY_LIST = "DAYS_ARRAY_LIST";
+    public static final String HOURS_ARRAY_LIST = "HOURS_ARRAY_LIST";
 
     @BindView(R.id.iconWeatherImageView) ImageView iconWeatherImageView;
     @BindView(R.id.iconDescriptionTextView) TextView iconDescriptionTextView;
@@ -56,6 +57,7 @@ public class MainActivity extends Activity {
     @BindDrawable(R.drawable.clear_night)
     Drawable clearNight;
     ArrayList<Day> days;
+    ArrayList<Hour> hours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +80,6 @@ public class MainActivity extends Activity {
                             ArrayList<Minute> minutes = getMinutelyWeatherFromJson(response);
                             CurrentWeather currentWeather = getCurrentWeatherFromJson(response);
 //                            Log.d(TAG,"lol: "+ response.substring(0,500));
-
                             iconWeatherImageView.setImageDrawable(currentWeather.getIconDrawableResource());
                             iconDescriptionTextView.setText(currentWeather.getDescription());
                             lowestTempTextView.setText(String.format("L: %s °",currentWeather.getLowestTemperature()));
@@ -97,10 +98,6 @@ public class MainActivity extends Activity {
         });
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
-
-
-
-
     }
     //Bind with Butterknife
     @OnClick(R.id.dailyBtnTextView)
@@ -112,6 +109,7 @@ public class MainActivity extends Activity {
     @OnClick(R.id.hourlyBtnTextView)
     public void hourlyWeatherClick(){
         Intent hourlyActivityIntent = new Intent(MainActivity.this, HourlyWeatherActivity.class);
+        hourlyActivityIntent.putParcelableArrayListExtra(HOURS_ARRAY_LIST, hours);
         startActivity(hourlyActivityIntent);
     }
     @OnClick(R.id.minutelyBtnTextView)
@@ -185,9 +183,7 @@ public class MainActivity extends Activity {
     private ArrayList<Hour> getHourlyWeatherFromJson (String json) throws JSONException {
 
         DateFormat dateFormat = new SimpleDateFormat("HH:mm");
-
-
-        ArrayList<Hour> hours = new ArrayList<>();
+        hours = new ArrayList<>();
         JSONObject jsonObject = new JSONObject(json);
         String timeZone = jsonObject.getString("timezone");
         dateFormat.setTimeZone(TimeZone.getTimeZone(timeZone));
