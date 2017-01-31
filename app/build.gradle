@@ -4,7 +4,7 @@ apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "me.asantiago.colorweather"
         minSdkVersion 16
@@ -28,8 +28,11 @@ dependencies {
     })
     testCompile 'junit:junit:4.12'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-    compile 'com.android.support:recyclerview-v7:25.0.+'
+    compile 'com.android.support:recyclerview-v7:25.1.0'
     compile 'com.jakewharton:butterknife:8.4.0'
+    compile 'com.android.support:appcompat-v7:25.1.0'
+
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.google.android.gms:play-services-location:9.4.0'
     compile 'com.android.volley:volley:1.0.0'
 }
